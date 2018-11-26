@@ -16,7 +16,7 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 
 %.o: %.cpp 
 	@echo "+$<"
-	@if [ $(FILE) = $(notdir $<) ]; then \
+	if [ $(FILE) = $(notdir $<) ]; then \
 		echo $(COMPILER) $(FLAGS) -Istudent -c student/$(notdir $<) -o student/$(notdir $@); \
 		$(COMPILER) $(FLAGS) -Istudent -c student/$(notdir $<) -o student/$(notdir $@); \
 		echo objcopy --weaken student/$(notdir $@); \
