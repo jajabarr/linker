@@ -22,6 +22,7 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 		$(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
 		REGEX=''; \
 		if [ $(CLASS) = $(FUNC)]; then \
+			echo SAME; \
 			REGEX='*$(FUNC)*'; \
 		else \
 			REGEX='*$(CLASS)*$(FUNC)*'; \
