@@ -16,11 +16,11 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 	@if [ $(FILE) = $(notdir $<) ]; then \
 		echo $(COMPILER) $(FLAGS) -Istudent -c student/$(notdir $<) -o student/$(notdir $@); \
 		$(COMPILER) $(FLAGS) -Istudent -c student/$(notdir $<) -o student/$(notdir $@); \
-		echo objcopy --weaken student/$(notdir $@) student/$(notdir $@); \
+		echo objcopy --weaken student/$(notdir $@); \
 		objcopy --weaken student/$(notdir $@); \
 		echo $(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
 		$(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
-		echo objcopy --weaken $@; \
+		echo objcopy -w -W *$(CLASS)*$(FUNC)* $@; \
 		objcopy -w -W *$(CLASS)*$(FUNC)* $@; \
 	else \
 		$(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
