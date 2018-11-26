@@ -29,7 +29,7 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 				REGEX="$$REGEX""-W !*$$LINE* "; \
 				echo +REGEX="$$REGEX"; \
 			done <$(basename $(FILE))_functions.txt; \
-			REGEX="$$REGEX"'-W *$(FUNC)*'; \
+			REGEX="$$REGEX""-W *$(FUNC)*"; \
 		else \
 			REGEX="-W *$(CLASS)*$(FUNC)*"; \
 		fi; \
