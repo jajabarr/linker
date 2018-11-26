@@ -25,11 +25,11 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 		$(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
 		REGEX=''; \
 		if [ $(CLASS) = $(FUNC) ]; then \
-			REGEX='*$(FUNC)*'; \
 			while read -r LINE; do \
-				REGEX="$$REGEX"" -W !*$$LINE*"; \
+				REGEX="$$REGEX""-W !*$$LINE* "; \
 				echo +REGEX="$$REGEX"; \
 			done <$(basename $(FILE))_functions.txt; \
+			REGEX="$$REGEX"'*$(FUNC)*'; \
 		else \
 			REGEX='*$(CLASS)*$(FUNC)*'; \
 		fi; \
