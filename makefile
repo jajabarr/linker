@@ -6,7 +6,7 @@ STUDENT=$(wildcard student/*.cpp)
 SOLUTION_OBJ=$(SOLUTION:.cpp=.o)
 STUDENT_OBJ=$(STUDENT:.cpp=.o)
 
-.PHONY: test clean
+.PHONY: test clean $(basename $(FILE))_functions.txt;
 
 test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 	@echo +CLASS=$(CLASS)
