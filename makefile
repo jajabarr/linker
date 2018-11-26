@@ -23,7 +23,7 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 		REGEX=''; \
 		if [ $(CLASS) = $(FUNC) ]; then \
 			REGEX='*$(FUNC)*'; \
-			IFS=$$'\r\n' GLOBIGNORE='*' command eval  'FUNCTIONS=($(cat Weather_functions.txt))'; \
+			IFS=$$'\r\n' GLOBIGNORE='*' command eval 'FUNCTIONS=`cat Weather_functions.txt`'; \
 			for f in $$FUNCTIONS; do \
 				REGEX:=" -W !$f"; \
 			done; \
