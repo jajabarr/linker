@@ -35,7 +35,6 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 		fi; \
 		echo +REGEX="$$REGEX"; \
 		echo objcopy -w "$$REGEX" $@; \
-		set -f; \
 		objcopy -w "$$REGEX" $@; \
 	else \
 		$(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
