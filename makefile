@@ -31,11 +31,11 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 			done <$(basename $(FILE))_functions.txt; \
 			REGEX="$$REGEX"'-W *$(FUNC)*'; \
 		else \
-			REGEX='-W *$(CLASS)*$(FUNC)*'; \
+			REGEX="-W *$(CLASS)*$(FUNC)*"; \
 		fi; \
 		echo +REGEX="$$REGEX"; \
 		echo objcopy -w "$$REGEX" $@; \
-		objcopy -w "$$REGEX" $@; \
+		objcopy -w $$REGEX $@; \
 	else \
 		$(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
 	fi
