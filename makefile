@@ -14,7 +14,6 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 %.o: %.cpp 
 	@echo "+$<"
 	@if [ $(FILE) = $(notdir $<) ]; then \
-		echo REPLACE $(FUNC); \
 		echo $(COMPILER) $(FLAGS) -Istudent -c student/$(notdir $<) -o student/$(notdir $@); \
 		$(COMPILER) $(FLAGS) -Istudent -c student/$(notdir $<) -o student/$(notdir $@); \
 		echo objcopy --weaken student/$(notdir $@) student/$(notdir $@); \
@@ -22,7 +21,7 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 		echo $(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
 		$(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
 		echo objcopy --weaken $@; \
-		objcopy -W _ZN7Weather8announceB5cxx11Ev $@; \
+		objcopy -w -W *$(CLASS)*$(FUNC)* $@; \
 	else \
 		$(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
 	fi
