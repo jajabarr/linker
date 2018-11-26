@@ -29,13 +29,13 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 				REGEX="$$REGEX""-W !*$$LINE* "; \
 				echo +REGEX="$$REGEX"; \
 			done <$(basename $(FILE))_functions.txt; \
-			REGEX="$$REGEX"'*$(FUNC)*'; \
+			REGEX="$$REGEX"'-W *$(FUNC)*'; \
 		else \
 			REGEX='*$(CLASS)*$(FUNC)*'; \
 		fi; \
 		echo +REGEX="$$REGEX"; \
 		echo objcopy -w -W "$$REGEX" $@; \
-		objcopy -w -W "$$REGEX" $@; \
+		objcopy -w "$$REGEX" $@; \
 	else \
 		$(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
 	fi
