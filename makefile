@@ -18,7 +18,7 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 		echo $(COMPILER) $(FLAGS) -Istudent -c student/$(notdir $<) -o student/$(notdir $@); \
 		$(COMPILER) $(FLAGS) -Istudent -c student/$(notdir $<) -o student/$(notdir $@); \
 		echo objcopy --weaken student/$(notdir $@) student/$(notdir $@); \
-		objcopy -K $(FUNC)--weaken student/$(notdir $@); \
+		objcopy -K $(FUNC) --weaken student/$(notdir $@); \
 		echo $(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
 		$(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
 		echo objcopy --weaken $@; \
