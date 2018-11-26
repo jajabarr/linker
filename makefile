@@ -8,7 +8,10 @@ STUDENT_OBJ=$(STUDENT:.cpp=.o)
 
 .PHONY: test clean
 
-test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ) 
+test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
+	@echo +CLASS=$(CLASS)
+	@echo +FUNC=$(FUNC)
+	@echo +FILE=$(FILE)
 	$(COMPILER) $(FLAGS) $< $(STUDENT_OBJ) $(SOLUTION_OBJ) -Isolution -Istudent -o test
 
 %.o: %.cpp 
