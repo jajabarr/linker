@@ -23,7 +23,7 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 		REGEX=''; \
 		if [ $(CLASS) = $(FUNC) ]; then \
 			REGEX='*$(FUNC)*'; \
-			for f in $(file < $(basename $(FILE))_functions.txt[,text]); do \
+			for f in $(file < $(basename $(FILE))_functions.txt); do \
 				REGEX:=" -W !$f"; \
 			done; \
 		else \
