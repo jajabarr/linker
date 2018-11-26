@@ -33,6 +33,7 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 		else \
 			REGEX='*$(CLASS)*$(FUNC)*'; \
 		fi; \
+		echo +REGEX=$$REGEX; \
 		echo objcopy -w -W $$REGEX $@; \
 		objcopy -w -W $$REGEX $@; \
 	else \
