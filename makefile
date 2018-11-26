@@ -9,7 +9,7 @@ STUDENT_OBJ=$(STUDENT:.cpp=.o)
 .PHONY: test clean
 
 test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ) 
-	$(COMPILER) $(FLAGS) $< $(SOLUTION_OBJ) $(STUDENT_OBJ) -Isolution -Istudent -o test
+	$(COMPILER) $(FLAGS) $< $(STUDENT_OBJ) $(SOLUTION_OBJ) -Isolution -Istudent -o test
 
 %.o: %.cpp 
 	@echo "+$<"
@@ -18,7 +18,7 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 		echo $(COMPILER) $(FLAGS) -Istudent -c student/$(notdir $<) -o student/$(notdir $@); \
 		$(COMPILER) $(FLAGS) -Istudent -c student/$(notdir $<) -o student/$(notdir $@); \
 		echo objcopy --weaken student/$(notdir $@) student/$(notdir $@); \
-		objcopy -K _ZN7Weather8announceB5cxx11Ev --weaken student/$(notdir $@); \
+		objcopy --weaken student/$(notdir $@); \
 		echo $(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
 		$(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
 		echo objcopy --weaken $@; \
