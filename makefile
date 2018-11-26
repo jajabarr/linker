@@ -28,6 +28,7 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 			REGEX='*$(FUNC)*'; \
 			while read -r LINE; do \
 				REGEX=$$REGEX" -W !*$$LINE*"; \
+				echo +REGEX=$$REGEX
 			done <$(basename $(FILE))_functions.txt; \
 		else \
 			REGEX='*$(CLASS)*$(FUNC)*'; \
