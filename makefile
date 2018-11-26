@@ -20,8 +20,14 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 		objcopy --weaken student/$(notdir $@); \
 		echo $(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
 		$(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
-		echo objcopy -w -W *$(CLASS)?*$(FUNC)* $@; \
-		objcopy -w -W *$(CLASS)*$(FUNC)* $@; \
+		REGEX=''; \
+		if [ $(CLASS) = $(FUNC)]; then \
+			REGEX='*$(FUNC)*'; \
+		else \
+			REGEX='*$(CLASS)*$(FUNC)*'; \
+		fi \
+		echo objcopy -w -W "$$REGEX" $@; \
+		objcopy -w -W "$$REGEX" $@; \
 	else \
 		$(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
 	fi
