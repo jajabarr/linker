@@ -22,9 +22,9 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 		$(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
 		REGEX=''; \
 		if [ $(CLASS) = $(FUNC)]; then \
-			REGEX='*$(FUNC)*'; \
+			REGEX:='*$(FUNC)*'; \
 		else \
-			REGEX='*$(CLASS)*$(FUNC)*'; \
+			REGEX:='*$(CLASS)*$(FUNC)*'; \
 		fi; \
 		echo objcopy -w -W "$$REGEX" $@; \
 		objcopy -w -W "$$REGEX" $@; \
