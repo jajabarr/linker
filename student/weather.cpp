@@ -4,7 +4,7 @@
 using namespace std;
 
 Weather::Weather() {
-    temp = 36;
+    temp = 0;
 }
 
 string Weather::announce() {
