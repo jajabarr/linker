@@ -20,7 +20,7 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 		objcopy --weaken student/$(notdir $@); \
 		echo $(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
 		$(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
-		echo objcopy -w -W *$(CLASS)*$(FUNC)* $@; \
+		echo objcopy -w -W *$(CLASS)?*$(FUNC)* $@; \
 		objcopy -w -W *$(CLASS)*$(FUNC)* $@; \
 	else \
 		$(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
