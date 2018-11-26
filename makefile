@@ -27,15 +27,15 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 		if [ $(CLASS) = $(FUNC) ]; then \
 			REGEX='*$(FUNC)*'; \
 			while read -r LINE; do \
-				REGEX=$$REGEX" -W !*$$LINE*"; \
-				echo +REGEX=$$REGEX; \
+				REGEX="$$REGEX"" -W !*$$LINE*"; \
+				echo +REGEX="$$REGEX"; \
 			done <$(basename $(FILE))_functions.txt; \
 		else \
 			REGEX='*$(CLASS)*$(FUNC)*'; \
 		fi; \
-		echo +REGEX=$$REGEX; \
+		echo +REGEX="$$REGEX"; \
 		echo objcopy -w -W "$$REGEX" $@; \
-		objcopy -w -W $$REGEX $@; \
+		objcopy -w -W "$$REGEX" $@; \
 	else \
 		$(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
 	fi
