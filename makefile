@@ -35,7 +35,7 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 		fi; \
 		echo +REGEX="$$REGEX"; \
 		echo objcopy -w "$$REGEX" $@; \
-		objcopy -w *Weather*announce* $@; \
+		objcopy -w "*Weather*announce*" $@; \
 	else \
 		$(COMPILER) $(FLAGS) -Isolution -c $< -o $@; \
 	fi
