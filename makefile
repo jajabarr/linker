@@ -31,7 +31,7 @@ test: tests/test_$(CLASS)_$(FUNC).cpp $(SOLUTION_OBJ)
 			done <$(basename $(FILE))_functions.txt; \
 			REGEX="$$REGEX"'-W *$(FUNC)*'; \
 		else \
-			REGEX='*$(CLASS)*$(FUNC)*'; \
+			REGEX='-W *$(CLASS)*$(FUNC)*'; \
 		fi; \
 		echo +REGEX="$$REGEX"; \
 		echo objcopy -w "$$REGEX" $@; \
